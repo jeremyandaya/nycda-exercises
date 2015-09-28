@@ -25,6 +25,17 @@
 			$(this.id).html(carElement);
 		};
 
+		Car.prototype.draw2 = function () {
+			var carHtml = '<img src="car2.png">';
+			var carElement = $(carHtml);
+			carElement.css({
+				position: "absolute",
+				right: this.x,
+				top: this.y
+			});
+			$(this.id).html(carElement);
+		};
+
 		Car.prototype.moveRight = function (distance, time, frames) {
 			if (distance === undefined){
 				distance = 10; // pixels
@@ -52,12 +63,46 @@
 			}
 		}
 
-		var supercar = new Car("#car1", 100,100);
+		Car.prototype.moveLeft = function (distance, time, frames) {
+			if (distance === undefined){
+				distance = 10; // pixels
+			}
+			if (time === undefined){
+				time = 1000; // milliseconds
+			}
 
-		var regularcar = new Car("#car2", 300,300);
+			if (frames === undefined){
+				frames = 30; // frames
+			}
+			console.log("We're changing from Car:", this.x, "to", this.x + distance);
+
+			var self = this;
+			var framesPerMillisecond = frames / time;
+			var distancePerFrame = distance / frames;
+
+			for (var i=0; i<frames; i++){
+				(function(i){
+					setTimeout(function(){
+						self.x += distancePerFrame;
+						self.draw2();
+					}, i * framesPerMillisecond);
+				})(i);
+			}
+		}
+
+		var supercar = new Car("#car1", 0,100);
+
+		var regularcar = new Car("#car2", 0,100);
+		
 		supercar.draw();
-		regularcar.draw();
+		regularcar.draw2();
 
+
+		setInterval(function(){
+      		supercar.moveRight();
+    		regularcar.moveLeft();
+    	},1000);
+    		
 	</script>
 </body>
 </html>
