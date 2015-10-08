@@ -1,15 +1,34 @@
+<<<<<<< HEAD
 DROP TABLE IF EXISTS presidents;
 
 CREATE TABLE IF NOT EXISTS presidents (
     id SERIAL PRIMARY KEY,
     president_number INTEGER NOT NULL,
+=======
+-- more info at http://datahub.io/dataset/list-of-us-presidents/resource/ba0cdb03-c0f0-45ff-a21f-63fdf6ce1a89
+-- TODO: adding presidents' cabinet members would make for some interesting many-to-many relations
+--  example: Donald Rumsfeld was in the cabinet of 2 different presidents (I think)
+-- TODO: famous quotes could be a one-to-many relation
+-- TODO: 
+
+DROP TABLE IF EXISTS presidents CASCADE;
+
+CREATE TABLE IF NOT EXISTS presidents (
+    id SERIAL PRIMARY KEY,
+    president_number INTEGER UNIQUE NOT NULL,
+>>>>>>> bf9dbbe65622efdfa60589b71f8ac97d0d6015d4
     name VARCHAR(100),
     birth_year INTEGER NOT NULL,
     death_year INTEGER,
     took_office DATE NOT NULL,
     left_office DATE,
+<<<<<<< HEAD
     party VARCHAR(100),
     home_state VARCHAR(100)
+=======
+    party VARCHAR(100) NOT NULL,
+    home_state VARCHAR(100) NOT NULL
+>>>>>>> bf9dbbe65622efdfa60589b71f8ac97d0d6015d4
 );
 
 DROP TABLE IF EXISTS prime_ministers;
@@ -26,9 +45,12 @@ CREATE TABLE IF NOT EXISTS prime_ministers (
     -- home_city VARCHAR(100)
 );
 
+<<<<<<< HEAD
 
 -- more info at http://datahub.io/dataset/list-of-us-presidents/resource/ba0cdb03-c0f0-45ff-a21f-63fdf6ce1a89
 
+=======
+>>>>>>> bf9dbbe65622efdfa60589b71f8ac97d0d6015d4
 INSERT INTO presidents VALUES (DEFAULT, 1, 'George Washington', 1732, 1799, '1789-04-30', '1797-03-04', 'No Party', 'Virginia');
 INSERT INTO presidents VALUES (DEFAULT, 44,'Barack Obama',1961,null,'2009-01-20',null,'Democratic', 'Illinois');
 INSERT INTO presidents VALUES (DEFAULT, 43,'George W. Bush',1946,null,'2001-01-20','2009-01-20','Republican', 'Texas');
@@ -72,9 +94,15 @@ INSERT INTO presidents VALUES (DEFAULT, 6,'John Quincy Adams',1767,1848,'1825-03
 INSERT INTO presidents VALUES (DEFAULT, 5,'James Monroe',1758,1831,'1817-03-04','1825-03-04','Democratic-Republican', 'Virginia');
 INSERT INTO presidents VALUES (DEFAULT, 4,'James Madison',1751,1836,'1809-03-04','1817-03-04','Democratic-Republican', 'Virginia');
 INSERT INTO presidents VALUES (DEFAULT, 3,'Thomas Jefferson',1743,1826,'1801-03-04','1809-03-04','Democratic-Republican', 'Virginia');
+<<<<<<< HEAD
 INSERT INTO presidents VALUES (DEFAULT, 2,'John Adams',1735,1826,'1797-03-04','1801-03-04','Federalist');
 
 -- I'll change this to the YYYY-MM-DD later and fix the order later, too
+=======
+INSERT INTO presidents VALUES (DEFAULT, 2,'John Adams',1735,1826,'1797-03-04','1801-03-04','Federalist', 'Massachusetts');
+
+-- I'll change this to the YYYY-MM-DD later and fix the order of the columns for prime ministers later, too
+>>>>>>> bf9dbbe65622efdfa60589b71f8ac97d0d6015d4
 SET datestyle = 'ISO, MDY';
 
 INSERT INTO prime_ministers VALUES (DEFAULT, 1,'Robert Walpole',1676,'4/4/1721','2/11/1742',1745);
