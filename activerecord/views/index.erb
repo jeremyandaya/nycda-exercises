@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Presidents</title>
+	<style>
+		td {
+			border: 1px solid gray;
+		}
+	</style>
+</head>
+<body>
+	<p>President count: <%= params[:presidents].length %></p>
+
+	<table style="width:100%; border:1px solid black;">
+		<tr style="font-weight:bold;">
+			<td>Name</td>
+			<td>Birth Year</td>
+			<td>Death Year</td>
+			<td>Took Office</td>
+			<td>Left Office</td>
+			<td>Party</td>
+			<td>Home State</td>
+
+		</tr>
+		<% params[:presidents].each do |p| %>
+		<tr 	style="color:rgb(<%=rand(255)%>,<%=rand(255)%>,<%=rand(255)%>);">
+			<td><%= p.name %></td>
+			<td><%= p.birth_year %></td>
+			<td><%= p.death_year %></td>
+			<td><%= p.took_office %></td>
+			<td><%= p.left_office %></td>
+			<td><%= p.party %></td>
+			<td><%= p.home_state %></td>
+		</tr>
+		<% end %>
+	</table>
+
+	<ul>
+		<% params[:presidents].each do |p| %>
+		<li style="color:rgb(<%=rand(255)%>,<%=rand(255)%>,<%=rand(255)%>);">
+			<%= p.name %>
+		</li>
+		<% end %>
+	</ul>
+	
+</body>
+</html>
