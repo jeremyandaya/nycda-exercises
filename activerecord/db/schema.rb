@@ -16,6 +16,16 @@ ActiveRecord::Schema.define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "avengers", force: :cascade do |t|
+    t.integer "avenger_number",                    null: false
+    t.string  "name",                  limit: 100
+    t.string  "real_name",             limit: 100
+    t.string  "height",                limit: 100
+    t.string  "weight",                limit: 100
+    t.string  "powers",                limit: 100
+    t.integer "first_appearance_year",             null: false
+  end
+
   create_table "presidents", force: :cascade do |t|
     t.integer "president_number",             null: false
     t.string  "name",             limit: 100
@@ -29,13 +39,6 @@ ActiveRecord::Schema.define(version: 0) do
 
   add_index "presidents", ["president_number"], name: "presidents_president_number_key", unique: true, using: :btree
 
-  create_table "presidentspets", force: :cascade do |t|
-    t.integer "owner"
-    t.string  "name",    limit: 100
-    t.string  "breed",   limit: 100
-    t.string  "species", limit: 100
-  end
-
   create_table "prime_ministers", force: :cascade do |t|
     t.integer "pm_number",               null: false
     t.string  "name",        limit: 100
@@ -45,19 +48,4 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "death_year"
   end
 
-  create_table "sc_justices", force: :cascade do |t|
-    t.integer "justice_number",                     null: false
-    t.string  "name",                   limit: 100
-    t.integer "birth_year",                         null: false
-    t.integer "death_year"
-    t.integer "took_office",                        null: false
-    t.integer "left_office"
-    t.boolean "chief_justice"
-    t.string  "reason_for_termination", limit: 100
-    t.integer "appointed_by"
-    t.string  "home_state",             limit: 100
-  end
-
-  add_foreign_key "presidentspets", "presidents", column: "owner", primary_key: "president_number", name: "presidentspets_owner_fkey"
-  add_foreign_key "sc_justices", "presidents", column: "appointed_by", primary_key: "president_number", name: "sc_justices_appointed_by_fkey"
 end
