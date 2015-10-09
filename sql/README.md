@@ -31,6 +31,7 @@ Back in the original terminal #1:
     $ createdb
     $ psql
 <<<<<<< HEAD
+<<<<<<< HEAD
     $ psql>>> \list
     $ psql>>> \conninfo
     $ psql>>> \?
@@ -41,6 +42,12 @@ You'll have to make a `database` and then a table... left as an exercise to the 
     $ nycdatwo=# \conninfo
     $ nycdatwo=# \?
     $ nycdatwo=# ^C
+=======
+    $ >>> nycdatwo=# \list
+    $ >>> nycdatwo=# \conninfo
+    $ >>> nycdatwo=# \?
+    $ >>> nycdatwo=# ^C
+>>>>>>> 0ae24cb05221752c3e9a697aeec5790d88c6b173
     $ cd nycda-exercises/sql/
     $ ls
     INSTALL.md presidents-queries.sql presidents-queries-exercises.sql presidents.sql
@@ -61,7 +68,7 @@ You'll have to make a `database` and then a table... left as an exercise to the 
     INSERT 0 1
     SET
     $ psql
-    $ nycdatwo=# \list
+    $ >>> nycdatwo=# \list
                                       List of databases
        Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges
     -----------+----------+----------+-------------+-------------+-----------------------
@@ -72,11 +79,11 @@ You'll have to make a `database` and then a table... left as an exercise to the 
      template1 | nycdatwo | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/nycdatwo          +
                |          |          |             |             | nycdatwo=CTc/nycdatwo
     (4 rows)
-    $ nycdatwo=# \conninfo
+    $ >>> nycdatwo=# \conninfo
     You are now connected to database "nycdatwo" as user "nycdatwo" via socket in "/tmp" at port "5432"
     $ nycdatwo=# \c postgres
     You are now connected to database "postgres" as user "nycdatwo"
-    $ postgres=# \dt
+    $ >>> postgres=# \dt
                   List of relations
      Schema |      Name       | Type  |  Owner
     --------+-----------------+-------+----------
